@@ -1,0 +1,18 @@
+<section class="skills" id="habilidades">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-eyebrow">Stack técnico</span>
+      <h2 class="section-title">Habilidades</h2>
+      <p class="section-subtitle">Tecnologías y herramientas con las que trabajo día a día.</p>
+    </div>
+
+    <div class="logos">
+        @for (tec of tecnologias; track tec.name) {
+          <div class="tech-item" >
+          <img [src]="tec.url" [alt]="tec.name" />
+          <span>{{tec.name}}</span>
+        </div>
+        }
+      </div>
+  </div>
+</section>

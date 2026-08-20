@@ -1,0 +1,52 @@
+<section class="projects" id="proyectos">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-eyebrow">Portafolio</span>
+      <h2 class="section-title">Proyectos</h2>
+      <p class="section-subtitle">Selecciona un proyecto para ver su descripción y sus capturas.</p>
+    </div>
+
+    <div class="projects__selector">
+      @for (project of projects; track project.id) {
+        <button
+          type="button"
+          class="projects__tab"
+          [class.projects__tab--active]="selectedId() === project.id"
+          (click)="select(project.id)"
+        >
+          {{ project.name }}
+        </button>
+      }
+    </div>
+
+    <div class="projects__panel">
+      <div class="projects__info">
+        <h3 class="projects__name">{{ selectedProject().name }}</h3>
+        <p class="projects__tagline">{{ selectedProject().tagline }}</p>
+
+        <div class="projects__tags">
+          @for (tag of selectedProject().tags; track tag) {
+            <span class="projects__tag">{{ tag }}</span>
+          }
+        </div>
+
+        <p class="projects__description">{{ selectedProject().description }}</p>
+
+        @if (selectedProject().demoUrl || selectedProject().repoUrl) {
+          <div class="projects__links">
+            @if (selectedProject().demoUrl) {
+              <a class="btn btn-primary" [href]="selectedProject().demoUrl" target="_blank" rel="noopener">Ver demo</a>
+            }
+            @if (selectedProject().repoUrl) {
+              <a class="btn btn-secondary" [href]="selectedProject().repoUrl" target="_blank" rel="noopener">Repositorio</a>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="projects__carousel">
+        <app-project-carousel [images]="selectedProject().images" />
+      </div>
+    </div>
+  </div>
+</section>

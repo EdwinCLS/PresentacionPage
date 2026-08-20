@@ -1,0 +1,28 @@
+<header class="header">
+  <div class="container header__inner">
+    <a class="header__brand" href="#top" (click)="closeMenu()">
+      <span class="header__brand-mark">EL</span>
+      <span class="header__brand-name">Edwin López</span>
+    </a>
+
+    <nav class="header__nav" [class.header__nav--open]="menuOpen()">
+      @for (link of navLinks; track link.href) {
+        <a class="header__link" [href]="link.href" (click)="closeMenu()">{{ link.label }}</a>
+      }
+      <a class="btn btn-primary header__cta" href="#contacto" (click)="closeMenu()">Contáctame</a>
+    </nav>
+
+    <button
+      class="header__toggle"
+      type="button"
+      [class.header__toggle--open]="menuOpen()"
+      (click)="toggleMenu()"
+      aria-label="Abrir menú de navegación"
+      [attr.aria-expanded]="menuOpen()"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
